@@ -102,7 +102,7 @@ CREATE TABLE Table_Name (
 );
 ```
 
-**Question 1**
+## Question 1
 
 Write a SQL Query to change the name of attribute "name" to "first_name" and add mobilenumber as number ,DOB as Date in the table Companies.
 
