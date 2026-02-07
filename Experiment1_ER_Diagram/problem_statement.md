@@ -8,226 +8,64 @@ Gain hands-on experience in designing ER diagrams that represent database struct
 
 ---
 
-# Scenario A: 
+# Scenario A: City Fitness Club Management
+
 
 **Business Context:**  
-The university database system is used to manage information about students, instructors, courses, departments, sections, classrooms, and scheduling.
+
+FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
 
 **Requirements:**  
--Store details of students, instructors, and departments.
 
--Maintain course and section information.
-
--Track which instructor teaches each section.
-
--Track which students enroll in sections.
-
--Manage classroom and time slot scheduling.
-
--Maintain course prerequisite details.
+-Members register with name, membership type, and start date.
+-Each member can join multiple programs (Yoga, Zumba, Weight Training).
+-Trainers assigned to programs; a program may have multiple trainers.
+-Members may book personal training sessions with trainers.
+-Attendance recorded for each session.
+-Payments tracked for memberships and sessions.
 
 ### ER Diagram:
 
-<img width="1440" height="919" alt="ER diagram" src="https://github.com/user-attachments/assets/5e55b913-6eaa-4ce1-aee1-122a3c6a9e28" />
+<img width="699" height="652" alt="Screenshot (769)" src="https://github.com/user-attachments/assets/d32de5ee-0420-438c-8dbc-bc951c401a10" />
 
 
 ### Entities and Attributes
 
-1.Department
-
-Department Name (Primary Key)
-Building
-Budget
-
-2.Instructor
-
-Instructor ID (Primary Key)
-Name
-Salary
-
-3.Student
-
-Student ID (Primary Key)
-Name
-Total Credit
-
-4.Course
-
-Course ID (Primary Key)
-Title
-Credits
-
-5.Section
-
-Section ID (Primary Key)
-Semester
-Year
-
-6.Classroom
-
-Building
-Room Number
-Capacity
-
-7.Time Slot
-
-Time Slot ID (Primary Key)
-Slot Time
-Start Time
-End Time
-Day
+| Entity            | Attributes (PK, FK)                                             | Notes                               |
+|-------------------|-----------------------------------------------------------------|-------------------------------------|
+| Member            | MemberID (PK), Name, MembershipType, StartDate                  | Gym member details                  |
+| Program           | ProgramID (PK), ProgramName                                     | Fitness program details             |
+| Trainer           | TrainerID (PK), Name, Specialization                            | Fitness trainer info                |
+| Session           | SessionID (PK), SessionDate, SessionTime, Status                | Personal training session details   |
+| Payment           | PaymentID (PK), MemberID (FK), Amount, PaymentDate, PaymentType | Financial transaction tracking      |
+| Enrollment        | MemberID (FK, PK), ProgramID (FK, PK)                           | Links members to programs           |
+| ProgramAssignment | TrainerID (FK, PK), ProgramID (FK, PK)                          | Links trainers to programs          |
+| Booking           | MemberID (FK, PK), TrainerID (FK, PK), SessionID (FK, PK)       | Links members, trainers, sessions   |
 
 ### Relationships and Constraints
 
-1.Course – Department
 
-Each course belongs to one department.
-One department can offer many courses.
-(One-to-Many relationship)
+| Relationship                     | Cardinality | Participation                         | Notes                                                                 |
+|----------------------------------|-------------|--------------------------------------|----------------------------------------------------------------------|
+| Member ENROLLS IN Program        | M:N         | Total (Enrollment), Partial (Member, Program) | Members can join multiple programs; programs have multiple members.   |
+| Trainer LEADS Program            | M:N         | Partial (Trainer), Total (Program)   | Trainers lead multiple programs; programs have multiple trainers.     |
+| Member BOOKS Session WITH Trainer| M:N         | Partial (Member, Trainer), Total (Session) | Members book sessions with trainers; trainers conduct sessions.       |
+| Member MAKES Payment             | 1:N         | Total (Payment), Partial (Member)    | Payments by a member; a member makes many payments.                  |
 
-2.Instructor – Department
 
-Each instructor works in one department.
-One department can have many instructors.
-(One-to-Many relationship)
-
-3.Student – Department
-
-Each student is associated with one department.
-One department can have many students.
-(One-to-Many relationship)
-
-4.Instructor – Section (Teaches)
-
-An instructor can teach multiple sections.
-A section is taught by one instructor.
-(One-to-Many relationship)
-
-5.Student – Section (Takes)
-
-A student can enroll in multiple sections.
-A section can have many students.
-(Many-to-Many relationship)
-
-6.Course – Section
-
-Each section is related to one course.
-A course can have many sections.
-(One-to-Many relationship)
-
-7.Section – Classroom
-
-Each section is conducted in one classroom.
-A classroom can host multiple sections at different times.
-(One-to-Many relationship)
-
-8.Section – Time Slot
-
-Each section is assigned one time slot.
-One time slot can be used by multiple sections.
-(One-to-Many relationship)
 
 ### Assumptions
--Each student belongs to only one department.
-
--Each instructor works in only one department.
-
--Each section is assigned to one classroom and one time slot.
-
--A student can enroll in multiple sections.
-
--A course can have multiple sections.
-
--Prerequisite courses must be completed before enrolling.
+- IDs are primary keys and unique.
+- Junction tables resolve all M:N relationships.
+- Session status covers attendance.
+---
 
 ## RESULT
 
-Thus, the ER diagram for the University Database System was successfully designed by identifying the entities, attributes, relationships, and constraints.
-This ER diagram clearly represents the academic structure and helps in efficient database implementation.
+Thus, the ER diagram for the City Fitness Club Management System was successfully designed by identifying the required entities, attributes, and relationships.
+The diagram clearly represents member management, trainer details, membership plans, class scheduling, and payment tracking.
+This ER diagram helps in effective database design and efficient management of the fitness club operations.
 
-# Scenario B: City Library Event & Book Lending System
-
-**Business Context:**  
-The Central Library wants to manage book lending and cultural events.
-
-**Requirements:**  
-- Members borrow books, with loan and return dates tracked.  
-- Each book has title, author, and category.  
-- Library organizes events; members can register.  
-- Each event has one or more speakers/authors.  
-- Rooms are booked for events and study.  
-- Overdue fines apply for late returns.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
-
----
-
-# Scenario C: Restaurant Table Reservation & Ordering
-
-**Business Context:**  
-A popular restaurant wants to manage reservations, orders, and billing.
-
-**Requirements:**  
-- Customers can reserve tables or walk in.  
-- Each reservation includes date, time, and number of guests.  
-- Customers place food orders linked to reservations.  
-- Each order contains multiple dishes; dishes belong to categories (starter, main, dessert).  
-- Bills generated per reservation, including food and service charges.  
-- Waiters assigned to serve reservations.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
-
----
 
 ## Instructions for Students
 
