@@ -121,8 +121,9 @@ ADD COLUMN DOB Date;
 
 **Question 2**
 
-Create a table named Products with the following constraints: ProductID as INTEGER should be the primary key. ProductName as TEXT should be unique and not NULL. Price as REAL should be greater than 0. StockQuantity as INTEGER should be non-negative.**
----
+Create a table named Products with the following constraints: ProductID as INTEGER should be the primary key. ProductName as TEXT should be unique and not NULL. Price as REAL should be greater than 0. StockQuantity as INTEGER should be non-negative.
+
+```
  CREATE TABLE Products
 (
 ProductID INTEGER primary key,
@@ -155,12 +156,13 @@ Stock INTEGER
 ```
 
 **Output:**
+
 <img width="1226" height="215" alt="Screenshot (761)" src="https://github.com/user-attachments/assets/0e73d9b3-92cb-483b-ad37-51bcb1200dca" />
 
 
 **Question 4**
 
- Insert the following employees into the Employee table:
+Insert the following employees into the Employee table:
 
 EmployeeID Name Position Department Salary
 
