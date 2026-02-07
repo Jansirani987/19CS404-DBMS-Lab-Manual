@@ -191,6 +191,7 @@ DepartmentID INTEGER,
 DepartmentName TEXT
 
 );
+
 ```
 
 **Output:**
