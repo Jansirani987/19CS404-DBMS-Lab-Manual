@@ -60,11 +60,6 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Session status covers attendance.
 ---
 
-## RESULT
-
-Thus, the ER diagram for the City Fitness Club Management System was successfully designed by identifying the required entities, attributes, and relationships.
-The diagram clearly represents member management, trainer details, membership plans, class scheduling, and payment tracking.
-This ER diagram helps in effective database design and efficient management of the fitness club operations.
 
 
 ## Instructions for Students
