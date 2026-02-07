@@ -8,7 +8,7 @@ Gain hands-on experience in designing ER diagrams that represent database struct
 
 ---
 
-# Scenario A: City Fitness Club Management
+# Scenario A: 
 
 **Business Context:**  
 FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
@@ -22,8 +22,9 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+
+<img width="1440" height="919" alt="ER diagram" src="https://github.com/user-attachments/assets/5e55b913-6eaa-4ce1-aee1-122a3c6a9e28" />
+
 
 ### Entities and Attributes
 
