@@ -1,4 +1,4 @@
-# Experiment 2: DDL Commands
+<img width="1230" height="225" alt="Screenshot (760)" src="https://github.com/user-attachments/assets/659099a4-9e15-45c1-b2f4-33bed5bc6b0b" /># Experiment 2: DDL Commands
 
 ## AIM
 To study and implement DDL commands and different types of constraints.
@@ -104,28 +104,39 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+-Write a SQL Query to change the name of attribute "name" to "first_name" and add mobilenumber as number ,DOB as Date in the table Companies.
 
-```sql
--- Paste your SQL code below for Question 1
+```
+ ALTER TABLE Companies
+rename name to first_name;
+ALTER TABLE Companies
+ADD COLUMN mobilenumber number;
+ALTER TABLE Companies
+ADD COLUMN DOB Date;
 ```
 
 **Output:**
+<img width="1184" height="270" alt="Screenshot (759)" src="https://github.com/user-attachments/assets/e7e16c9d-fe93-4120-af9a-24d19e9b6601" />
 
-![Output1](output.png)
 
 **Question 2**
----
--- Paste Question 2 here
 
-```sql
--- Paste your SQL code below for Question 2
+-- Create a table named Products with the following constraints: ProductID as INTEGER should be the primary key. ProductName as TEXT should be unique and not NULL. Price as REAL should be greater than 0. StockQuantity as INTEGER should be non-negative.
+---
+ CREATE TABLE Products
+(
+ProductID INTEGER primary key,
+ProductName TEXT UNIQUE NOT NULL,
+Price REAL CHECK(Price>0),
+StockQuantity INTEGER CHECK(StockQuantity>0)
+);
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1230" height="225" alt="Screenshot (760)" src="https://github.com/user-attachments/assets/a7ecb6ef-d5fd-462f-91cc-cd2539622608" />
+
 
 **Question 3**
 ---
