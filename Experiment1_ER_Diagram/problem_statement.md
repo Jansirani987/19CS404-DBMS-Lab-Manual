@@ -140,6 +140,11 @@ One time slot can be used by multiple sections.
 
 -Prerequisite courses must be completed before enrolling.
 
+## RESULT
+
+Thus, the ER diagram for the University Database System was successfully designed by identifying the entities, attributes, relationships, and constraints.
+This ER diagram clearly represents the academic structure and helps in efficient database implementation.
+
 # Scenario B: City Library Event & Book Lending System
 
 **Business Context:**  
