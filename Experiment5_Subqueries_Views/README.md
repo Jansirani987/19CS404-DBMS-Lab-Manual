@@ -345,8 +345,6 @@ where salesman_id in(
 **Output:**
 <img width="1279" height="537" alt="image" src="https://github.com/user-attachments/assets/d3601d0a-f005-44b5-9d68-bd9a5fb65688" />
 
-**Output:**
-<img width="1439" height="823" alt="Screenshot 2025-11-26 at 11 21 08 PM" src="https://github.com/user-attachments/assets/15bede30-f5cc-4021-ba9a-9489fdd115cb" />
 
 
 ## RESULT
