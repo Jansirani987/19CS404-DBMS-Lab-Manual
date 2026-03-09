@@ -439,11 +439,6 @@ JOIN salesman s
 **Output:**
 
 <img width="1280" height="961" alt="image" src="https://github.com/user-attachments/assets/59b1a5d3-5f80-4b54-9242-0ba55d56a4f2" />
-**Output:**
-
-
-<img width="1440" height="815" alt="Screenshot 2025-11-26 at 11 27 08 PM" src="https://github.com/user-attachments/assets/94c8ca56-8aec-48d2-bc96-cca87257879a" />
-
 
 ## RESULT
 Thus, the SQL queries to implement different types of joins have been executed successfully.
