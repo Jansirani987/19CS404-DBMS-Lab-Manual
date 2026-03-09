@@ -1,161 +1,227 @@
-# Experiment 5: Subqueries and Views
-
-## AIM
+xperiment 5: Subqueries and Views
+AIM
 To study and implement subqueries and views.
 
-## THEORY
-
-### Subqueries
+THEORY
+Subqueries
 A subquery is a query inside another SQL query and is embedded in:
-- WHERE clause
-- HAVING clause
-- FROM clause
 
-**Types:**
-- **Single-row subquery**:
-  Sub queries can also return more than one value. Such results should be made use along with the operators in and any.
-- **Multiple-row subquery**:
-  Here more than one subquery is used. These multiple sub queries are combined by means of ‘and’ & ‘or’ keywords.
-- **Correlated subquery**:
-  A subquery is evaluated once for the entire parent statement whereas a correlated Sub query is evaluated once per row processed by the parent statement.
+WHERE clause
+HAVING clause
+FROM clause
+Types:
 
-**Example:**
-```sql
+Single-row subquery: Sub queries can also return more than one value. Such results should be made use along with the operators in and any.
+Multiple-row subquery: Here more than one subquery is used. These multiple sub queries are combined by means of ‘and’ & ‘or’ keywords.
+Correlated subquery: A subquery is evaluated once for the entire parent statement whereas a correlated Sub query is evaluated once per row processed by the parent statement.
+Example:
+
 SELECT * FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
-```
-### Views
-A view is a virtual table based on the result of an SQL SELECT query.
-**Create View:**
-```sql
+Views
+A view is a virtual table based on the result of an SQL SELECT query. Create View:
+
 CREATE VIEW view_name AS
 SELECT column1, column2 FROM table_name WHERE condition;
-```
-**Drop View:**
-```sql
+Drop View:
+
 DROP VIEW view_name;
-```
+Question 1
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
 
-**Question 1**
---
--- Paste Question 1 here
+Sample table: CUSTOMERS
 
-```sql
--- Paste your SQL code below for Question 1
-```
+ID NAME AGE ADDRESS SALARY
 
-**Output:**
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
 
-![Output1](output.png)
+7 Muffy 24 Indore 10000
 
-**Question 2**
----
--- Paste Question 2 here
+select * from CUSTOMERS where AGE<30;
+Output:
 
-```sql
--- Paste your SQL code below for Question 2
-```
+image
+Question 2
+Write a query to display all the customers whose ID is the difference between the salesperson ID of Mc Lyon and 2001.
 
-**Output:**
+salesman table
 
-![Output2](output.png)
+name type
 
-**Question 3**
----
--- Paste Question 3 here
+salesman_id numeric(5) name varchar(30) city varchar(15) commission decimal(5,2)
 
-```sql
--- Paste your SQL code below for Question 3
-```
+customer table
 
-**Output:**
+name type
 
-![Output3](output.png)
+customer_id int cust_name text city text grade int salesman_id int
 
-**Question 4**
----
--- Paste Question 4 here
+select *
+from customer
+where customer_id =(
+    select salesman_id -2001
+    from salesman
+    where name='Mc Lyon'
+);
+Output:
 
-```sql
--- Paste your SQL code below for Question 4
-```
+image
+Question 3
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
 
-**Output:**
+Sample table: CUSTOMERS
 
-![Output4](output.png)
+ID NAME AGE ADDRESS SALARY
 
-**Question 5**
----
--- Paste Question 5 here
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
 
-```sql
--- Paste your SQL code below for Question 5
-```
+7 Muffy 24 Indore 10000
 
-**Output:**
+select * from CUSTOMERS where salary=1500;
+Output:
 
-![Output5](output.png)
+image
+Question 4
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is LESS than $2500.
 
-**Question 6**
----
--- Paste Question 6 here
+Sample table: CUSTOMERS
 
-```sql
--- Paste your SQL code below for Question 6
-```
+ID NAME AGE ADDRESS SALARY
 
-**Output:**
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
 
-![Output6](output.png)
+7 Muffy 24 Indore 10000
 
-**Question 7**
----
--- Paste Question 7 here
+select * from CUSTOMERS
+where salary<2500;
+Output:
 
-```sql
--- Paste your SQL code below for Question 7
-```
+image
+Question 5
+From the following tables, write a SQL query to find all the orders generated in New York city. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
 
-**Output:**
+SALESMAN TABLE
 
-![Output7](output.png)
+name type
 
-**Question 8**
----
--- Paste Question 8 here
+salesman_id numeric(5) name varchar(30) city varchar(15) commission decimal(5,2)
 
-```sql
--- Paste your SQL code below for Question 8
-```
+ORDERS TABLE
 
-**Output:**
+name type
 
-![Output8](output.png)
+ord_no int purch_amt real ord_date text customer_id int salesman_id int
 
-**Question 9**
----
--- Paste Question 9 here
+select ord_no, purch_amt, ord_date, customer_id, salesman_id
+from ORDERS
+where salesman_id in(
+    select salesman_id
+    from salesman
+    where city='New York'
+);
+Output:
 
-```sql
--- Paste your SQL code below for Question 9
-```
+image
+Question 6
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the minimum grade achieved in each subject.
 
-**Output:**
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
 
-![Output9](output.png)
+select student_name,grade
+from GRADES g
+where grade=(
+    select MIN(grade)
+    from GRADES
+    where subject=g.subject
+);
+Output:
 
-**Question 10**
----
--- Paste Question 10 here
+image
+Question 7
+From the following tables write a SQL query to find all orders generated by London-based salespeople. Return ord_no, purch_amt, ord_date, customer_id, salesman_id.
 
-```sql
--- Paste your SQL code below for Question 10
-```
+salesman table
 
-**Output:**
+name type
 
-![Output10](output.png)
+salesman_id numeric(5) name varchar(30) city varchar(15) commission decimal(5,2)
+
+orders table
+
+name type
+
+order_no int purch_amt real order_date text customer_id int salesman_id int
+
+select ord_no, purch_amt, ord_date, customer_id, salesman_id
+from ORDERS
+where salesman_id in(
+    select salesman_id
+    from salesman
+    where city='London'
+);
+Output:
+
+image
+Question 8
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose Address as Delhi and age below 30
+
+Sample table: CUSTOMERS
+
+ID NAME AGE ADDRESS SALARY
+
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
+
+7 Muffy 24 Indore 10000
+
+select * from CUSTOMERS
+where ADDRESS is 'Delhi' and AGE<30
+order by ID;
+Output:
+
+image
+Question 9
+From the following tables, write a SQL query to find all orders generated by the salespeople who may work for customers whose id is 3007. Return ord_no, purch_amt, ord_date, customer_id, salesman_id.
+
+Table Name: orders
+
+name type
+
+order_no int purch_amt real order_date text customer_id int salesman_id int
+
+select * from orders
+where salesman_id in(
+    select salesman_id
+    from orders
+    where customer_id=3007
+);
+Output:
+
+image
+Question 10
+From the following tables, write a SQL query to find those salespeople who earned the maximum commission. Return ord_no, purch_amt, ord_date, and salesman_id.
+
+salesman table
+
+name type
+
+salesman_id numeric(5) name varchar(30) city varchar(15) commission decimal(5,2)
+
+orders table
+
+name type
+
+order_no int purch_amt real order_date text customer_id int salesman_id int
+
+select  ord_no, purch_amt, ord_date, salesman_id
+from orders
+where salesman_id in(
+    select salesman_id 
+    from salesman
+    where commission=(select MAX(commission) from salesman)
+);
+Output: image
 
 
-## RESULT
+
+RESULT
 Thus, the SQL queries to implement subqueries and views have been executed successfully.
